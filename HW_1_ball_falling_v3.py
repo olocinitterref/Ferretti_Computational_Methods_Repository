@@ -4,7 +4,7 @@ import argparse as ap
 
 parser = ap.ArgumentParser(description='calculate and plot the time, position, and speed of a ball in free fall')
 parser.add_argument('height', type=float, help='This is the height from which the ball is being dropped')
-parser.add_argument('acceleration', type=float, help='This is the acceleration due to gravity')
+parser.add_argument('--acceleration', type=float, default = 9.81, help='This is the acceleration due to gravity')
 args = parser.parse_args()
 
 t = np.linspace(0,100,20) #time from 0 to 10 seconds
@@ -48,6 +48,6 @@ def plot_freefall(height, acceleration):
     plt.show()
 
 if __name__ == '__main__':
-    print(ball_in_freefall(args.height,args.acceleration)[3])
+    print(ball_in_freefall(args.height,args.acceleration)[3], "seconds to hit the ground")
 
 plot_freefall(args.height,args.acceleration)
