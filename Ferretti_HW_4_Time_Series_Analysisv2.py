@@ -125,7 +125,7 @@ if __name__ == '__main__':
 
         # bottom row: power spectrum
         ax = axes[1, k]
-        ax.semilogy(freqs[1:], power[1:], lw=0.8, label="power")   # skip the zero-frequency bin
+        ax.semilogy(freqs[1:], power[1:], lw=0.8, label="power")
         for h in range(1, 11):
             ax.axvline(h * f_orb, color="gray", ls=":", lw=0.6,
                     label=r"harmonics of $f_{orb}$" if h == 1 else None)
@@ -138,7 +138,6 @@ if __name__ == '__main__':
     plt.show()
 
     def harmonic_reconstruction(coeffs, freqs, n, mean, K, f0=f_orb, halfwidth=1):
-        """Keep only the bins at k*f0 (k = 1..K), plus `halfwidth` neighbors on each side."""
         keep = np.zeros(len(coeffs), dtype=bool)
         df = freqs[1]
         for k in range(1, K + 1):
